@@ -1,0 +1,129 @@
+{
+  "products": {
+    "config" : {
+      "batchSize" : 500,
+      "numberOfThreads" : 1
+    },
+    "identifier" : {
+      "csvKey": "Product_ID"
+    },
+    "productType" : {
+      "csvKey" : "Product type"
+    },
+    "parentIdentifier" : {
+      "csvKey": "Parent ID"
+    },
+    "attributes": [
+      {
+        "csvKey": "Product_ID",
+        "emporixKey": "id"
+      },
+      {
+        "csvKey" : "Product type",
+        "emporixKey" : "productType"
+      },
+      {
+        "csvKey": "Code",
+        "emporixKey": "code"
+      },
+      {
+        "csvKey" : "Product_name_DE",
+        "emporixKey" : "name.de"
+      },
+      {
+        "csvKey" : "Product_name_EN",
+        "emporixKey" : "name.en"
+      },
+      {
+        "csvKey" : "Product_description_DE",
+        "emporixKey" : "description.de"
+      },
+      {
+        "csvKey" : "Product_description_EN",
+        "emporixKey" : "description.en"
+      },
+      {
+        "csvKey": "Tax_DE",
+        "emporixKey": "taxClasses.DE"
+      },
+      {
+        "csvKey" : "Showcase_Mixins",
+        "emporixKey" : "metadata.mixins.customProductAttributes"
+      },
+      {
+        "csvKey" : "Grape",
+        "emporixKey" : "mixins.customProductAttributes.grape"
+      },
+      {
+        "csvKey" : "Country",
+        "emporixKey" : "mixins.customProductAttributes.country"
+      },
+      {
+        "csvKey" : "Region",
+        "emporixKey" : "mixins.customProductAttributes.region"
+      },
+      {
+        "csvKey" : "Winery",
+        "emporixKey" : "mixins.customProductAttributes.winery"
+      },
+      {
+        "csvKey" : "Year",
+        "emporixKey" : "mixins.customProductAttributes.year"
+      }
+    ]
+  },
+  "images" : {
+    "directoryPath" : "PATH_TO_PRODUCT_IMAGES",
+    "columns" : ["Image_1", "Image_2", "Image_3", "Image_4"]
+  },
+  "categories" : {
+    "catalog": "neteleven Showcase Katalog Wein",
+    "categoryTree" : {
+      "csvKey" : "Category_name_DE",
+      "csvKeySlug" : "Slug_DE",
+      "separator" : " > ",
+      "localizedNames" : {
+        "de" : "Category_name_DE",
+        "en" : "Category_name_EN"
+      },
+      "localizedSlug": {
+        "de" : "Slug_DE",
+        "en" : "Slug_EN"
+      }
+    },
+    "productAssignment" : {
+      "csvKey" : "Product_ID"
+    }
+  },
+  "prices" : {
+    "productIdentifier" : {
+      "csvKey" : "Product_ID"
+    },
+    "sites" : [
+      {
+        "siteCode": "main",
+        "currency": "EUR",
+        "location": "DE",
+        "tiers": [
+          {
+            "csvKey": "List_price"
+          }
+        ],
+        "sellingPriceIdentifier": {
+          "csvKey": "Selling_price"
+        }
+      }
+    ]
+  },
+  "availabilities" : {
+    "productIdentifier" : {
+      "csvKey" : "Product_ID"
+    },
+    "sites" : [
+      {
+        "siteCode" : "main",
+        "csvKey" : "Stock_DE"
+      }
+    ]
+  }
+}

@@ -35,7 +35,7 @@ def create_prices(mapping, database, productDatabase, site, apiUrl, tenant, acce
       if productId == None:
         print(f"Skipping price creation for {sku} because the identifier does not exist in product database")
       else:
-        payload = prepare_payload(item, mapping, site, productId)
+        payload = prepare_payload(item, site, productId)
         persist_price(apiUrl, tenant, accessToken, payload)
 
 def construct_product_id(productDatabase, mapping, productId):
@@ -52,31 +52,43 @@ def construct_product_id(productDatabase, mapping, productId):
   return None
 
 
-def prepare_payload(item, mapping, site, productId):
-  currency = site['currency']
-  siteCode = site['siteCode']
-  country = site['location']
-  prices = list()
-  for tier in site['tiers']:
-    priceValue = item[tier['csvKey']]
-    prices.append({"priceValue" : priceValue})
-  payload = {
-           "itemId": {
-             "itemType": "PRODUCT",
-             "id": productId
-           },
-           "currency": currency,
-           "location": {
-             "countryCode": country
-           },
-           "restrictions": {
-             "siteCodes": [
-               siteCode
-             ]
-           },
-           "tierValues": prices
-         }
-  return payload
+def prepare_payload(item, site, productId):
+    currency = site['currency']
+    siteCode = site['siteCode']
+    country = site['location']
+    prices = list()
+    for tier in site['tiers']:
+        priceValue = item[tier['csvKey']]
+        prices.append({"priceValue": priceValue})
+    try:
+        basicPrice = item[site['tiers'][0]['csvKey']]
+        payload = {
+            "itemId": {
+                "itemType": "PRODUCT",
+                "id": productId
+            },
+            "currency": currency,
+            "location": {
+                "countryCode": country
+            },
+            "restrictions": {
+                "siteCodes": [
+                    siteCode
+                ]
+            },
+            "tierValues": prices,
+            "salePrice": {
+                "discountAmount": float(basicPrice) - float(item[site['sellingPriceIdentifier']['csvKey']]),
+                "description": "Discount that reduces the product price."
+            }
+        }
+        return payload
+    except ValueError:
+        print("\nPlease provide at least one tiered price or a basic price respectively.\n")
+        return dict()
+    except KeyError:
+        print("\nPlease provide information for the selling price in the mapping json-file.\n")
+        return ()
 
 def persist_price(apiUrl, tenant, accessToken, payload):
     r = http.post(f'{apiUrl}/price/{tenant}/prices',

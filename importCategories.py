@@ -1,15 +1,8 @@
 #!/usr/bin/env python3
-import argparse
-import json
-import sys
-import os
-import csv
-from time import sleep
 from importUtils import *
 
 import requests
 from requests.adapters import HTTPAdapter
-from requests.auth import HTTPBasicAuth
 from requests.packages.urllib3.util.retry import Retry
 
 
@@ -29,10 +22,11 @@ def import_categories(mappingFile, productCsvFile, csvFile, apiUrl, tenant, acce
 
 def create_category_tree(apiUrl, tenant, accessToken, mapping, database):
     createdCategories = {}
+    createdSlugs = {}
     categoriesTrees = find_all_categories_trees(mapping, database)
     for key in categoriesTrees:
-      create_categories(apiUrl, tenant, accessToken, mapping, key, categoriesTrees[key], createdCategories)
-    return createdCategories
+      create_categories(apiUrl, tenant, accessToken, mapping, key, categoriesTrees[key], createdCategories, createdSlugs)
+    return createdSlugs
 
 def find_all_categories_trees(mapping, database):
     categoriesWithoutDuplicates = {}
@@ -40,32 +34,58 @@ def find_all_categories_trees(mapping, database):
       categoriesWithoutDuplicates[item[mapping['categories']['categoryTree']['csvKey']]] = item
     return categoriesWithoutDuplicates
 
-def create_categories(apiUrl, tenant, accessToken, mapping, categoryTree, categoryRow, createdCategories):
+def create_categories(apiUrl, tenant, accessToken, mapping, categoryTree, categoryRow, createdCategories, createdSlugs):
     categories = categoryTree.split(mapping['categories']['categoryTree']['separator'])
-    parent = None
-    for category in categories:
-      if category not in createdCategories:
-        categoryNames = create_localized_names(mapping, category, categoryRow, categories.index(category))
-        payload = prepare_category_payload(parent, categoryNames)
-        persistedCategory = persist_category(apiUrl, tenant, accessToken, payload)
-        createdCategories[category] = { 'id' : persistedCategory['id'], 'categoryTree' : categoryTree }
-        if parent == None:
-          assign_root_category_to_catalog(apiUrl, tenant, accessToken, mapping, persistedCategory['id'])
-        parent = persistedCategory['id']
-      else:
-        parent = createdCategories[category]['id']
+
+    try:
+        slugs = categoryRow[mapping['categories']['categoryTree']['csvKeySlug']].split(mapping['categories']['categoryTree']['separator'])
+        parent = None
+        i = 0
+        for category in categories:
+            if slugs[i] not in createdSlugs:
+                categoryNames = create_localized_names(mapping, category, categoryRow, categories.index(category))
+                categorySlugs = create_localized_slugs(mapping, categoryRow, categories.index(category))
+                payload = prepare_category_payload(parent, categoryNames, categorySlugs)
+                persistedCategory = persist_category(apiUrl, tenant, accessToken, payload)
+                createdCategories[category] = { 'id' : persistedCategory['id'], 'categoryTree' : categoryTree }
+                createdSlugs[slugs[i]] = {'category': category, 'id': persistedCategory['id'], 'categoryTree': categoryTree}
+                if parent == None:
+                    assign_root_category_to_catalog(apiUrl, tenant, accessToken, mapping, persistedCategory['id'])
+                parent = persistedCategory['id']
+            else:
+                parent = createdCategories[category]['id']
+            i += 1
+    except KeyError:
+        print("Please provide a csvKeySlug in categories > categoryTree within the mapping json-file.")
+
 
 def create_localized_names(mapping, categoryName, categoryRow, index):
     localizedName = {}
     if 'localizedNames' in mapping['categories']['categoryTree']:
-       for lang in mapping['categories']['categoryTree']['localizedNames']:
-          csvColumnKey = mapping['categories']['categoryTree']['localizedNames'][lang]
-          localizedTree = categoryRow[csvColumnKey].split(mapping['categories']['categoryTree']['separator'])
-          if len(localizedTree) > index:
-            localizedName[lang] = localizedTree[index]
+        for lang in mapping['categories']['categoryTree']['localizedNames']:
+            csvColumnKey = mapping['categories']['categoryTree']['localizedNames'][lang]
+            localizedTree = categoryRow[csvColumnKey].split(mapping['categories']['categoryTree']['separator'])
+            if len(localizedTree) > index:
+                localizedName[lang] = localizedTree[index]
+        # Unused languages "fr" and "it" are necessary, otherwise the storefront will show the category names only in German language.
+        localizedName["fr"] = "Inutilisé"
+        localizedName["it"] = "Inutilizzato"
     else:
-      localizedName["en"] = categoryName
+        localizedName["en"] = categoryName
     return localizedName
+
+def create_localized_slugs(mapping, categoryRow, index):
+    localizedSlug = {}
+    if 'localizedSlug' in mapping['categories']['categoryTree']:
+        for lang in mapping['categories']['categoryTree']['localizedSlug']:
+            csvColumnKey = mapping['categories']['categoryTree']['localizedSlug'][lang]
+            localizedSlugTree = categoryRow[csvColumnKey].split(mapping['categories']['categoryTree']['separator'])
+            if len(localizedSlugTree) > index:
+                localizedSlug[lang] = localizedSlugTree[index]
+        # Unused languages "fr" and "it" are necessary, otherwise the storefront will show the category names only in German language.
+        localizedSlug['fr'] = "inutilise"
+        localizedSlug['it'] = "inutilizzato"
+    return localizedSlug
 
 def assign_root_category_to_catalog(apiUrl, tenant, accessToken, mapping, categoryId):
     if 'catalog' in mapping['categories']:
@@ -94,17 +114,21 @@ def assign_root_category_to_catalog(apiUrl, tenant, accessToken, mapping, catego
 
 
 def create_category_assignments(apiUrl, tenant, accessToken, mapping, database, productDatabase, persistedCategories):
-   for item in database:
-      tree = item[mapping['categories']['categoryTree']['csvKey']]
-      leaf = tree.split(mapping['categories']['categoryTree']['separator'])[-1]
-      sku = item[mapping['categories']['productAssignment']['csvKey']]
-      productId = construct_product_id(productDatabase, mapping, sku)
-      if productId == None:
-        print(f"Skipping category assignment creation for {sku} because the identifier does not exist in product database")
-      else:
-        payload = prepare_category_assignment_payload(productId)
-        persistedCategory = persistedCategories[leaf]
-        persist_category_assignment(apiUrl, tenant, accessToken, persistedCategory['id'], payload)
+    for item in database:
+        try:
+            slugTree = item[mapping['categories']['categoryTree']['csvKeySlug']]
+            slugLeaf = slugTree.split(mapping['categories']['categoryTree']['separator'])[-1]
+            sku = item[mapping['categories']['productAssignment']['csvKey']]
+            productId = construct_product_id(productDatabase, mapping, sku)
+            if productId == None:
+                print(
+                    f"Skipping category assignment creation for {sku} because the identifier does not exist in product database")
+            else:
+                payload = prepare_category_assignment_payload(productId)
+                persist_category_assignment(apiUrl, tenant, accessToken, persistedCategories[slugLeaf]['id'], payload)
+        except KeyError:
+            print("Please provide a csvKeySlug in categories > categoryTree within the mapping json-file.")
+
 
 def construct_product_id(productDatabase, mapping, productId):
   csvColumnId = mapping['products']['identifier']['csvKey']
@@ -119,10 +143,11 @@ def construct_product_id(productDatabase, mapping, productId):
           return productId
   return None
 
-def prepare_category_payload(parentId, localizedNames):
+def prepare_category_payload(parentId, localizedNames, localizedSlugs):
   return {
       "parentId" : parentId,
       "localizedName" : localizedNames,
+      "localizedSlug" : localizedSlugs,
       "published" : True
   }
 

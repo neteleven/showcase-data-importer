@@ -15,7 +15,9 @@ from concurrent.futures import ThreadPoolExecutor
 from requests.adapters import HTTPAdapter
 from requests.auth import HTTPBasicAuth
 from requests.packages.urllib3.util.retry import Retry
+from dotenv import load_dotenv
 
+load_dotenv()
 
 retries = Retry(total=3, backoff_factor=1, status_forcelist=[400, 500, 502, 503, 504])
 http = requests.Session()
@@ -198,7 +200,7 @@ def upload_images(apiUrl, tenant, accessToken, mapping, item):
 
 def upload_image(apiUrl, tenant, accessToken, id, mapping, item, imageColumn):
     if item[imageColumn] != "":
-      imagePath = mapping['images']['directoryPath'] + "/" + item[imageColumn]
+      imagePath = os.getenv(mapping['images']['directoryPath']) + "/" + item[imageColumn]
       print("Uploading image: " + imagePath + " for item: " + id)
       payload = {
           "type": "BLOB",
