@@ -67,9 +67,6 @@ def create_localized_names(mapping, categoryName, categoryRow, index):
             localizedTree = categoryRow[csvColumnKey].split(mapping['categories']['categoryTree']['separator'])
             if len(localizedTree) > index:
                 localizedName[lang] = localizedTree[index]
-        # Unused languages "fr" and "it" are necessary, otherwise the storefront will show the category names only in German language.
-        localizedName["fr"] = "Inutilisé"
-        localizedName["it"] = "Inutilizzato"
     else:
         localizedName["en"] = categoryName
     return localizedName
@@ -82,9 +79,6 @@ def create_localized_slugs(mapping, categoryRow, index):
             localizedSlugTree = categoryRow[csvColumnKey].split(mapping['categories']['categoryTree']['separator'])
             if len(localizedSlugTree) > index:
                 localizedSlug[lang] = localizedSlugTree[index]
-        # Unused languages "fr" and "it" are necessary, otherwise the storefront will show the category names only in German language.
-        localizedSlug['fr'] = "inutilise"
-        localizedSlug['it'] = "inutilizzato"
     return localizedSlug
 
 def assign_root_category_to_catalog(apiUrl, tenant, accessToken, mapping, categoryId):
