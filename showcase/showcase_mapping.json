@@ -2,7 +2,7 @@
   "products": {
     "config" : {
       "batchSize" : 500,
-      "numberOfThreads" : 1
+      "numberOfThreads" : 4
     },
     "identifier" : {
       "csvKey": "Product_ID"
@@ -48,27 +48,43 @@
       },
       {
         "csvKey" : "Showcase_Mixins",
-        "emporixKey" : "metadata.mixins.customProductAttributes"
+        "emporixKey" : "metadata.mixins.custom_product_attributes_n11"
       },
       {
-        "csvKey" : "Grape",
-        "emporixKey" : "mixins.customProductAttributes.grape"
+        "csvKey" : "Grape_DE",
+        "emporixKey" : "mixins.custom_product_attributes_n11.grape_n11showcase.de"
       },
       {
-        "csvKey" : "Country",
-        "emporixKey" : "mixins.customProductAttributes.country"
+        "csvKey" : "Grape_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.grape_n11showcase.en"
       },
       {
-        "csvKey" : "Region",
-        "emporixKey" : "mixins.customProductAttributes.region"
+        "csvKey" : "Country_DE",
+        "emporixKey" : "mixins.custom_product_attributes_n11.country_n11showcase.de"
       },
       {
-        "csvKey" : "Winery",
-        "emporixKey" : "mixins.customProductAttributes.winery"
+        "csvKey" : "Country_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.country_n11showcase.en"
       },
       {
-        "csvKey" : "Year",
-        "emporixKey" : "mixins.customProductAttributes.year"
+        "csvKey" : "Region_DE",
+        "emporixKey" : "mixins.custom_product_attributes_n11.region_n11showcase.de"
+      },
+      {
+        "csvKey" : "Region_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.region_n11showcase.en"
+      },
+      {
+        "csvKey" : "Winery_DE",
+        "emporixKey" : "mixins.custom_product_attributes_n11.winery_n11showcase.de"
+      },
+      {
+        "csvKey" : "Winery_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.winery_n11showcase.en"
+      },
+      {
+        "csvKey" : "Vintage",
+        "emporixKey" : "mixins.custom_product_attributes_n11.vintage_n11showcase"
       }
     ]
   },

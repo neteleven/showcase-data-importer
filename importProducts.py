@@ -17,7 +17,9 @@ from requests.auth import HTTPBasicAuth
 from requests.packages.urllib3.util.retry import Retry
 from dotenv import load_dotenv
 
+# Basic settings
 load_dotenv()
+CUSTOM_ATTRIBUTES_LANGUAGES = os.getenv('CUSTOM_ATTRIBUTES_LANGUAGES').split(",")
 
 retries = Retry(total=3, backoff_factor=1, status_forcelist=[400, 500, 502, 503, 504])
 http = requests.Session()
@@ -60,14 +62,16 @@ def prepare_batches(list, size):
   for i in range(0, len(list), size):
     yield list[i:i+size]
 
+
 def prepare_product_payload(apiUrl, tenant, token, mappingConfig, itemLine):
     payload = {}
     payload['published'] = True
     payload['metadata'] = {
-      "overridden" : ['name', 'description'],
-      "mixins" : {
-        "productCustomAttributes" : "https://res.cloudinary.com/saas-ag/raw/upload/schemata/productCustomAttributesMixIn.v29.json"
-      }
+        "overridden": ['name', 'description'],
+        # This mixin schema is only necessary if you want to use the product custom attributes of Emporix.
+        # "mixins" : {
+        #   "productCustomAttributes" : "https://res.cloudinary.com/saas-ag/raw/upload/schemata/productCustomAttributesMixIn.v29.json"
+        # }
     }
 
     attributes = mappingConfig['products']['attributes']
@@ -97,24 +101,37 @@ def attribute_value_injector(apiUrl, tenant, token, productType, payload, attrib
 def inject_standard_attribute(apiUrl, tenant, token, productType, payload, attribute, mapping, value, item):
     keys = attribute['emporixKey'].split(".")
     nestedObject = payload
+    index = 0
     for key in keys:
-      if key == keys[-1]:
-        if 'type' in attribute and attribute['type'] == "REFERENCE":
-          nestedObject[key] = import_reference(apiUrl, tenant, token, attribute, mapping, value, item)
-        elif 'type' in attribute and attribute['type'] == "NUMBER":
-          nestedObject[key] = int(value)
-        elif 'type' in attribute and attribute['type'] == "DECIMAL":
-          nestedObject[key] = float(value)
-        elif 'type' in attribute and attribute['type'] == "BOOLEAN":
-          nestedObject[key] = value == "TRUE"
-        elif 'type' in attribute and attribute['type'] == "ARRAY":
-          nestedObject[key] = json.loads(value.replace("'", '"'))
+        if key == keys[-1]:
+            if 'type' in attribute and attribute['type'] == "REFERENCE":
+                nestedObject[key] = import_reference(apiUrl, tenant, token, attribute, mapping, value, item)
+            elif 'type' in attribute and attribute['type'] == "NUMBER":
+                nestedObject[key] = int(value)
+            elif 'type' in attribute and attribute['type'] == "DECIMAL":
+                nestedObject[key] = float(value)
+            elif 'type' in attribute and attribute['type'] == "BOOLEAN":
+                nestedObject[key] = value == "TRUE"
+            elif 'type' in attribute and attribute['type'] == "ARRAY":
+                nestedObject[key] = json.loads(value.replace("'", '"'))
+            elif isinstance(nestedObject, list):
+                for language in CUSTOM_ATTRIBUTES_LANGUAGES:
+                    if key == language:
+                        nestedObject.append({
+                            "language": key,
+                            "value": value
+                        })
+            else:
+                nestedObject[key] = value
         else:
-          nestedObject[key] = value
-      else:
-        if key not in nestedObject:
-          nestedObject[key] = {}
-      nestedObject = nestedObject[key]
+            if key not in nestedObject:
+                if (keys[index+1] in CUSTOM_ATTRIBUTES_LANGUAGES) and (keys[0] == "mixins"):
+                    nestedObject[key] = []
+                else:
+                    nestedObject[key] = {}
+        if key != keys[-1]:
+            nestedObject = nestedObject[key]
+            index += 1
 
 
 def inject_variant_attribute_for_variant_parent(productType, payload, attribute, values):
