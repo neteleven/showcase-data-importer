@@ -2,7 +2,7 @@
   "products": {
     "config" : {
       "batchSize" : 500,
-      "numberOfThreads" : 4
+      "numberOfThreads" : 1
     },
     "identifier" : {
       "csvKey": "Product_ID"
