@@ -117,7 +117,7 @@
     },
     "sites" : [
       {
-        "siteCode": "main",
+        "siteCode": "DE",
         "currency": "EUR",
         "location": "DE",
         "tiers": [
@@ -137,7 +137,7 @@
     },
     "sites" : [
       {
-        "siteCode" : "main",
+        "siteCode" : "DE",
         "csvKey" : "Stock_DE"
       }
     ]
