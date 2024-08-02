@@ -1,7 +1,6 @@
 Product_ID,Category_name_DE,Category_name_EN,Slug_DE,Slug_EN
 b30a0d50-4439-4699-9ee9-cc98,Wein > Weißwein > Frankreich,Wine > White Wine > France,wein > weiss > weiss-frankreich,wine > white > white-france
-87f9d981-45a9-4638-a45d-75a7,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
-4c7323c7-42af-49e3-83d3-f6da,Wein > Rotwein > Italien,Wine > Red Wine > Italy,wein > rot > rot-italien,wine > red > red-italy
+4c7323c7-42af-49e3-83d3-f6da,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
 36279c6e-31f1-4cb2-a11b-c1c0,Wein > Weißwein > Deutschland,Wine > White Wine > Germany,wein > weiss > weiss-deutschland,wine > white > white-germany
 5d4c5324-89a8-4db1-8ee8-0c69,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
 d1271284-4ec4-4a4b-a0b8-3b33,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
@@ -9,6 +8,7 @@ d1271284-4ec4-4a4b-a0b8-3b33,Wein > Rotwein > Weitere Länder,Wine > Red Wine > 
 b7ca48b6-75a1-48d3-a077-1de8,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
 419d7a8a-0b29-4d20-9812-1c00,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
 b9c66d9e-50b2-4442-9f43-925b,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+87f9d981-45a9-4638-a45d-75a7,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
 7c5da24d-cd43-4ca5-b5a5-5a7d,Wein > Rotwein > Frankreich,Wine > Red Wine > France,wein > rot > rot-frankreich,wine > red > red-france
 b46f9bb2-1d5a-4bfc-9684-4b4a,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
 7cbdcda1-b07d-49cb-8b09-80c7,Wein > Rotwein > Italien,Wine > Red Wine > Italy,wein > rot > rot-italien,wine > red > red-italy
@@ -49,3 +49,53 @@ f5de5e85-d531-4882-a3c3-d7db,Wein > Weißwein > Weitere Länder,Wine > White Win
 4c26b48d-03e6-481f-9cde-9a8d,Wein > Roséwein > Frankreich,Wine > Rosé Wine > France,wein > rose > rose-frankreich,wine > rose > rose-france
 5c0254c8-609e-4d20-bb6c-2c9d,Wein > Roséwein > Italien,Wine > Rosé Wine > Italy,wein > rose > rose-italien,wine > rose > rose-italy
 805e2e33-8f1d-4d99-9a27-9f45,Wein > Roséwein > Frankreich,Wine > Rosé Wine > France,wein > rose > rose-frankreich,wine > rose > rose-france
+805e2e33-8f1d-4d99-9a27-9f46,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f47,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f48,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f49,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f50,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f51,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f52,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f53,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f54,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f55,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f56,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f57,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f58,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f59,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f60,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f61,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f62,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f63,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f64,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f65,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f66,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f67,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f68,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f69,Wein > Rotwein > Italien,Wine > Red Wine > Italy,wein > rot > rot-italien,wine > red > red-italy
+805e2e33-8f1d-4d99-9a27-9f70,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f71,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f72,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f73,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f74,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f75,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f76,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f77,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f78,Wein > Rotwein > Italien,Wine > Red Wine > Italy,wein > rot > rot-italien,wine > red > red-italy
+805e2e33-8f1d-4d99-9a27-9f79,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f80,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f81,Wein > Weißwein > Italien,Wine > White Wine > Italy,wein > rot > rot-italien,wine > red > red-italy
+805e2e33-8f1d-4d99-9a27-9f82,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f83,Wein > Rotwein > Frankreich,Wine > Red Wine > France,wein > rot > rot-frankreich,wine > red > red-france
+805e2e33-8f1d-4d99-9a27-9f84,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f85,Wein > Weißwein > Italien,Wine > White Wine > Italy,wein > weiss > weiss-italien,wine > white > white-italy
+805e2e33-8f1d-4d99-9a27-9f86,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f87,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f88,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f89,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f90,Wein > Rotwein > Weitere Länder,Wine > Red Wine > Other Countries,wein > rot > rot-weitere,wine > red > red-others
+805e2e33-8f1d-4d99-9a27-9f91,Wein > Weißwein > Weitere Länder,Wine > White Wine > Other Countries,wein > weiss > weiss-weitere,wine > white > white-others
+805e2e33-8f1d-4d99-9a27-9f92,Wein > Roséwein > Weitere Länder,Wine > Rosé Wine > Other Countries,wein > rose > rose-weitere,wine > rose > rose-others
+805e2e33-8f1d-4d99-9a27-9f93,Wein > Roséwein > Italien,Wine > Rosé Wine > Italy,wein > rose > rose-italien,wine > rose > rose-italy
+805e2e33-8f1d-4d99-9a27-9f94,Wein > Roséwein > Weitere Länder,Wine > Rosé Wine > Other Countries,wein > rose > rose-weitere,wine > rose > rose-others
+805e2e33-8f1d-4d99-9a27-9f95,Wein > Roséwein > Weitere Länder,Wine > Rosé Wine > Other Countries,wein > rose > rose-weitere,wine > rose > rose-others
