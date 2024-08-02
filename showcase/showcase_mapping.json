@@ -87,40 +87,44 @@
         "emporixKey" : "mixins.custom_product_attributes_n11.vintage_n11showcase"
       },
       {
-        "csvKey" : "Color_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.color_n11showcase.en"
-      },{
         "csvKey" : "Color_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.color_n11showcase.de"
       },
       {
-        "csvKey" : "Flavor_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.flavor_n11showcase.en"
-      },{
+        "csvKey" : "Color_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.color_n11showcase.en"
+      },
+      {
         "csvKey" : "Flavor_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.flavor_n11showcase.de"
       },
       {
-        "csvKey" : "WineStyle_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.winestyle_n11showcase.en"
-      },{
+        "csvKey" : "Flavor_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.flavor_n11showcase.en"
+      },
+      {
         "csvKey" : "WineStyle_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.winestyle_n11showcase.de"
       },
       {
-        "csvKey" : "TastesLike_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.tasteslike_n11showcase.en"
-      },{
+        "csvKey" : "WineStyle_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.winestyle_n11showcase.en"
+      },
+      {
         "csvKey" : "TastesLike_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.tasteslike_n11showcase.de"
       },
       {
-        "csvKey" : "PairsWellWith_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.pairswellwith_n11showcase.en"
+        "csvKey" : "TastesLike_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.tasteslike_n11showcase.en"
       },
       {
         "csvKey" : "PairsWellWith_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.pairswellwith_n11showcase.de"
+      },
+      {
+        "csvKey" : "PairsWellWith_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.pairswellwith_n11showcase.en"
       },
       {
         "csvKey" : "AlcoholContent",
@@ -143,36 +147,36 @@
         "emporixKey" : "mixins.custom_product_attributes_n11.qualitylevel_n11showcase"
       },
       {
-        "csvKey" : "Maturation_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.maturation_n11showcase.en"
-      },
-      {
         "csvKey" : "Maturation_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.maturation_n11showcase.de"
       },
       {
-        "csvKey" : "ClosureType_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.closuretype_n11showcase.en"
+        "csvKey" : "Maturation_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.maturation_n11showcase.en"
       },
       {
         "csvKey" : "ClosureType_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.closuretype_n11showcase.de"
       },
       {
-        "csvKey" : "DrinkableUntil_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.drinkableuntil_n11showcase.en"
+        "csvKey" : "ClosureType_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.closuretype_n11showcase.en"
       },
       {
         "csvKey" : "DrinkableUntil_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.drinkableuntil_n11showcase.de"
       },
       {
-        "csvKey" : "Awards_EN",
-        "emporixKey" : "mixins.custom_product_attributes_n11.awards_n11showcase.en"
+        "csvKey" : "DrinkableUntil_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.drinkableuntil_n11showcase.en"
       },
       {
         "csvKey" : "Awards_DE",
         "emporixKey" : "mixins.custom_product_attributes_n11.awards_n11showcase.de"
+      },
+      {
+        "csvKey" : "Awards_EN",
+        "emporixKey" : "mixins.custom_product_attributes_n11.awards_n11showcase.en"
       }
     ]
   },
